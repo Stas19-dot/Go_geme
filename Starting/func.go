@@ -8,16 +8,16 @@ import (
 )
 
 // Функция для создания игрока
-func NewPlayer(name string, hp int, damage int) *Player {
+func NewPlayer(name string) *Player {
 
-	return &Player{Name: name, HP: hp, Damage: damage}
+	return &Player{Name: name, HP: 100, Damage: 10}
 
 }
 
 // Функция для создания моба
-func NewUnit(hp int, damage int) *Unit {
+func NewUnit() *Unit {
 
-	return &Unit{HP: hp, Damage: damage}
+	return &Unit{HP: 20, Damage: 14}
 
 }
 
@@ -82,10 +82,23 @@ func Output(player *Player, unit *Unit) {
 
 }
 
-func levle(u *Unit) {
+func levl(u *Unit, levl int) {
 
-	if u.HP <= 0 {
-		u.HP = 20
-	}
+	u.HP *= levl
+	u.Damage *= levl
+
+}
+
+func unload_u(u *Unit) {
+
+	u.Damage = 20
+	u.HP = 14
+
+}
+
+func unload_p(p *Player) {
+
+	p.Damage = 10
+	p.HP = 100
 
 }
