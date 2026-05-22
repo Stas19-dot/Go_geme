@@ -1,7 +1,6 @@
 package main
 
 type Unit struct {
-	Name   string
 	HP     int
 	Damage int
 }

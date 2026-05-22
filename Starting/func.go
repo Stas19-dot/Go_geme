@@ -14,11 +14,10 @@ func NewPlayer(name string, hp int, damage int) *Player {
 
 }
 
-
 // Функция для создания моба
-func NewUnit(name string, hp int, damage int) *Unit {
+func NewUnit(hp int, damage int) *Unit {
 
-	return &Unit{Name: name, HP: hp, Damage: damage}
+	return &Unit{HP: hp, Damage: damage}
 
 }
 
@@ -49,7 +48,7 @@ func Attack(u *Unit, player *Player) error {
 
 		if n%2 == 0 {
 			fmt.Printf("Поздравляю вы попали. HP -%d\n", player.Damage)
-			(*u).HP -= (*player).Damage
+			u.HP -= player.Damage
 		} else {
 			fmt.Println("К сожалению вы промахнулись...")
 		}
@@ -80,5 +79,13 @@ func Output(player *Player, unit *Unit) {
 
 	fmt.Println("Ваше HP:", (*player).HP)
 	fmt.Println("HP моба:", (*unit).HP)
+
+}
+
+func levle(u *Unit) {
+
+	if u.HP <= 0 {
+		u.HP = 20
+	}
 
 }
