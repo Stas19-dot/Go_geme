@@ -14,4 +14,5 @@ type Player struct {
 	Name   string
 	HP     int
 	Damage int
+	bank int
 }
