@@ -7,6 +7,8 @@ import (
 	"time"
 )
 
+
+
 // Функция для создания игрока
 func NewPlayer(name string) *Player {
 

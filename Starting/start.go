@@ -24,7 +24,7 @@ func Start() {
 	fmt.Print("\033[H\033[2J")
 
 	for {
-		fmt.Println("1: Информация | 2: Левл | 3: Exit")
+		fmt.Println("1: Настройки | 2: Левл | 3: Exit")
 		var b int16
 		fmt.Scan(&b)
 		time.Sleep(time.Second * 2)
@@ -37,9 +37,13 @@ func Start() {
 			var c int
 			fmt.Scan(&c)
 			if c <= 0 {
+				fmt.Print("\033[H\033[2J")
 				fmt.Println("Ошибка!!!")
+				time.Sleep(time.Second * 2)
+				fmt.Print("\033[H\033[2J")
 				continue
 			} else {
+				fmt.Print("\033[H\033[2J")
 				levl(unit, c)
 				var count int
 				for {
@@ -52,7 +56,7 @@ func Start() {
 						if unit.HP <= 0 {
 							fmt.Print("\033[H\033[2J")
 							fmt.Printf("Вы прошли %d лвл\n", c)
-							continue
+							break
 						}
 						if player.HP <= 0 {
 							fmt.Println("Вы умерли весь ваш прогресс был снят")
@@ -65,8 +69,8 @@ func Start() {
 				}
 			}
 		} else if b == 1 {
-			fmt.Printf("Имя: %s; HP: %d; Урон: %d\n", (*player).Name, (*player).HP, (*player).Damage)
-			continue
+			// fmt.Printf("Имя: %s; HP: %d; Урон: %d\n", (*player).Name, (*player).HP, (*player).Damage)
+			// continue
 		}
 	}
 
