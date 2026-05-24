@@ -56,6 +56,7 @@ func Start() {
 						if unit.HP <= 0 {
 							fmt.Print("\033[H\033[2J")
 							fmt.Printf("Вы прошли %d лвл\n", c)
+							player.bank += count * 10
 							break
 						}
 						if player.HP <= 0 {
@@ -69,8 +70,7 @@ func Start() {
 				}
 			}
 		} else if b == 1 {
-			// fmt.Printf("Имя: %s; HP: %d; Урон: %d\n", (*player).Name, (*player).HP, (*player).Damage)
-			// continue
+			Setting(player)
 		}
 	}
 
