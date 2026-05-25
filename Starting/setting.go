@@ -15,7 +15,9 @@ func Setting(pl *Player) {
 		fmt.Println("1: Улучшение оружия | 2: Информация | 3: Exite")
 		fmt.Scan(&count)
 		if count == 1 {
+
 			New_damage(pl)
+
 		} else if count == 2 {
 			fmt.Print("\033[H\033[2J")
 			fmt.Printf("Name: %s; HP: %d; Damage: %d\n", pl.Name, pl.HP, pl.Damage)

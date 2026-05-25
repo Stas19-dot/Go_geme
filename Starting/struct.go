@@ -5,14 +5,9 @@ type Unit struct {
 	Damage int
 }
 
-// type Squad struct {
-// 	Units       []Unit
-// 	unit_active int
-// }
-
 type Player struct {
 	Name   string
 	HP     int
 	Damage int
-	bank int
+	bank   int
 }
