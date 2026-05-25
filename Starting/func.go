@@ -7,8 +7,6 @@ import (
 	"time"
 )
 
-
-
 // Функция для создания игрока
 func NewPlayer(name string) *Player {
 
@@ -22,22 +20,6 @@ func NewUnit() *Unit {
 	return &Unit{HP: 20, Damage: 14}
 
 }
-
-// Добавление моба в одну команду
-// func AddUnit(s *Squad, u *Unit) error {
-// 	if len((*s).Units) == 5 {
-// 		return errors.New("В команде уже максимальное кол-во мобов")
-
-// 		// Проверка на HP
-// 	} else if u.HP <= 0 {
-// 		return errors.New("Вы не можете добавить моба с HP <= 0")
-// 	} else {
-
-// 		s.Units = append(s.Units, *u)
-// 		return nil
-
-// 	}
-// }
 
 // Функция атаки
 func Attack(u *Unit, player *Player) error {
@@ -77,6 +59,44 @@ func Attack(u *Unit, player *Player) error {
 	}
 }
 
+// Функция для выбора левла и основной игры
+func Levl_Start(unit *Unit, player *Player) {
+	fmt.Println("Введите номер лвл (1-10): ")
+	var c int
+	fmt.Scan(&c)
+	if c <= 0 || c > 10 {
+		fmt.Print("\033[H\033[2J")
+		fmt.Println("Ошибка!!!")
+		time.Sleep(time.Second)
+		fmt.Print("\033[H\033[2J")
+	} else {
+		fmt.Print("\033[H\033[2J")
+		levl_Unit(unit, c)
+		var count int
+		for {
+			fmt.Println("1: Attack | 2: Exite")
+			fmt.Scan(&count)
+			fmt.Print("\033[H\033[2J")
+			if count == 1 {
+				Attack(unit, player)
+				if unit.HP <= 0 {
+					fmt.Print("\033[H\033[2J")
+					fmt.Printf("Вы прошли %d лвл\n", c)
+					player.bank += count * 10
+					break
+				}
+				if player.HP <= 0 {
+					fmt.Println("Вы умерли весь ваш прогресс был снят")
+					unload_p(player)
+				}
+				continue
+			} else {
+				break
+			}
+		}
+	}
+}
+
 func Output(player *Player, unit *Unit) {
 
 	fmt.Println("Ваше HP:", (*player).HP)
@@ -84,7 +104,7 @@ func Output(player *Player, unit *Unit) {
 
 }
 
-func levl(u *Unit, levl int) {
+func levl_Unit(u *Unit, levl int) {
 
 	u.HP *= levl
 	u.Damage *= levl

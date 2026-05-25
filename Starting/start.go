@@ -33,42 +33,7 @@ func Start() {
 		if b == 3 {
 			break
 		} else if b == 2 {
-			fmt.Println("Введите номер лвл (1-10): ")
-			var c int
-			fmt.Scan(&c)
-			if c <= 0 {
-				fmt.Print("\033[H\033[2J")
-				fmt.Println("Ошибка!!!")
-				time.Sleep(time.Second * 2)
-				fmt.Print("\033[H\033[2J")
-				continue
-			} else {
-				fmt.Print("\033[H\033[2J")
-				levl(unit, c)
-				var count int
-				for {
-					fmt.Println("1: Attack | 2: Exite")
-					fmt.Scan(&count)
-					fmt.Print("\033[H\033[2J")
-
-					if count == 1 {
-						Attack(unit, player)
-						if unit.HP <= 0 {
-							fmt.Print("\033[H\033[2J")
-							fmt.Printf("Вы прошли %d лвл\n", c)
-							player.bank += count * 10
-							break
-						}
-						if player.HP <= 0 {
-							fmt.Println("Вы умерли весь ваш прогресс был снят")
-							unload_p(player)
-						}
-						continue
-					} else {
-						break
-					}
-				}
-			}
+			Levl_Start(unit, player)
 		} else if b == 1 {
 			Setting(player)
 		}
