@@ -15,8 +15,14 @@ func Setting(pl *Player) {
 		fmt.Println("1: Улучшение оружия | 2: Информация | 3: Exite")
 		fmt.Scan(&count)
 		if count == 1 {
+			fmt.Println("Ваше кол-во денег:", pl.bank)
+			fmt.Println("Хотите улучшить?")
 
-			New_damage(pl)
+			var scan string
+			fmt.Scan(&scan)
+			if scan == "Да" {
+				New_damage(pl)
+			}
 
 		} else if count == 2 {
 			fmt.Print("\033[H\033[2J")
