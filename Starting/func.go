@@ -6,7 +6,7 @@ import (
 	"math/rand"
 	"time"
 )
-
+// R2k???qW&UUdws8
 // Функция для создания игрока
 func NewPlayer(name string) *Player {
 
